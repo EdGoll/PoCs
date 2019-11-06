@@ -1,0 +1,61 @@
+
+
+<div class="ui-g">
+  <div class="ui-g-6">
+    <h4>
+      <span id="user-management-page-heading">Módulo de Admisiones - Operaciones SOA/SDC</span>
+    </h4>
+  </div>
+  <div class="ui-g-6" align="right">
+    <input type="button" class="btn btn-primary mx-1" value="Nueva Admision" [routerLink]="['/admision/registro']"  />
+  </div>
+</div>
+
+<!-- <div>
+  <div style="align-content: center">
+  <h4>
+      <span id="user-management-page-heading">Módulo de Admisiones - Operaciones SOA/SDC</span>
+  </h4>
+
+</div>
+<div>
+
+  <input type="button" class="btn btn-secondary mx-1" value="Limpiar"/>
+
+</div> -->
+<div>
+  <div class="float-right">
+      <span class="text-md-left">Actualizar listado:</span>
+      <p-inputSwitch  [(ngModel)]="checkeado" ></p-inputSwitch>
+  </div>
+  <p-tabView>
+
+    <!-- <p-tabPanel header="Registro">
+         <app-admision-form-registro></app-admision-form-registro>
+    </p-tabPanel> -->
+
+    <p-tabPanel header="Primaria" >
+      <app-admision-grid name="Primaria" [admisiones$]="primarias"></app-admision-grid>
+    </p-tabPanel>
+<!--
+    <p-tabPanel header="Secundaria">
+      <app-admision-grid name="Secundaria" [admisiones]="secundarias"></app-admision-grid>
+    </p-tabPanel>
+
+    <p-tabPanel header="Exhaustiva">
+        <app-admision-grid name="Exhaustiva" [admisiones]="exhaustivas"></app-admision-grid>
+      </p-tabPanel>
+-->
+    <p-tabPanel header="Resultados">
+      <app-admision-grid name="Resultados" [admisiones$]="resultados"></app-admision-grid>
+    </p-tabPanel>
+<!--
+    <p-tabPanel header="Buscar">
+        <app-admision-buscar></app-admision-buscar>
+    </p-tabPanel>
+-->
+
+  </p-tabView>
+
+</div>
+

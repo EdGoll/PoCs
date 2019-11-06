@@ -1,0 +1,32 @@
+<div class="table-responsive" >
+    <p-table [value]="admisiones$" [responsive]="true">
+        <ng-template pTemplate="caption">
+            Ultimos Movimientos
+        </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th><span>Placa</span></th>
+              <th><span>Pais</span> </th>
+              <th><span>Conductor</span></th>
+              <th><span>Estado</span></th>
+              <th><span>Acciones</span></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-adm>
+
+              <tr [ngStyle]="{'background-color':pintarFilaSegunEstado(adm)}">
+              <td>{{adm?.vehiculo?.placa}}</td>
+              <td>{{adm?.vehiculo?.pais?.descripcion}}</td>
+              <td>{{adm.conductor.primerNombre}} {{adm.conductor.apPaterno}}</td>
+              <td><div style="align-content: center">{{adm.estadoAutorizacion.id }}</div></td>
+            <td>
+                <button class="btn btn-success mx-1" *ngIf="habilitarBotonEvento(adm, 'APROBAR')" (click)="confirmarAccion(adm,'APROBAR')">Aprobar</button>
+          <!--  <button class="btn btn-warning mx-1" *ngIf="habilitarBotonEvento(adm, 'SEC')" (click)="irADetalleAdmision(adm)">SEC</button>
+                <button class="btn btn-warning mx-1" *ngIf="habilitarBotonEvento(adm, 'EXH')" (click)="irADetalleAdmision(adm)">EXH</button>
+                <button class="btn btn-warning mx-1" *ngIf="habilitarBotonEvento(adm, 'DERIVAR')" (click)="irADetalleAdmision(adm)">DERIVAR</button> -->
+                <button class="btn btn-primary mx-1" *ngIf="habilitarBotonEvento(adm, 'VER')" (click)="irADetalleAdmision(adm)">Ver</button>
+            </td>
+          </tr>
+      </ng-template>
+    </p-table>
+</div>
